@@ -11,14 +11,18 @@ cd test_pics/
 #Just echoing them for now
 for NAME in $(ls); do
 
-#If the file is a jpg renames it
+
+
+
+#If the file is a jpg, rename it
 if [ "$(file $NAME|grep jpg)" ]; then
 
+#Determine what the new name will be
 newname=$dateformat-${NAME}
-echo "$newname"
-echo "Renaming ${NAME} to ${NAME%.*}.jpg"
 
-#mv ${NAME} ${NAME%.*}.gif
+#Replace it and send message stating so 
+echo "Renaming ${NAME} to $newname.jpg"
+mv ${NAME} $newname.jpg
 
 else
 
